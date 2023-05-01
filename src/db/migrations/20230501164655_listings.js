@@ -13,9 +13,7 @@ exports.up = (knex) => knex.schema.createTable("listings", (table) => {
     table.text("description");
     table.timestamps(true, true);
     table.string("brand");
-    table.integer("bidder1");
-    table.integer("bidder2");
-    table.integer("bidder3");
+    table.integer('user_bid')
     table.string("post_name");
 });
 

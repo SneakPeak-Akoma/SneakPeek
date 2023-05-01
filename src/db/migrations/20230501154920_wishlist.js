@@ -5,8 +5,8 @@
 exports.up = (knex) => knex.schema.createTable('wishlist',(table) => {
 
     table.increments();
-    table.integer('post_id')
-    table.integer('user_id')
+    table.integer('post_id');
+    table.integer('user_id');
 
 });
 
