@@ -47,13 +47,13 @@ class User {
     }
   }
 
-  static async create(username, password) {
+  static async create(username, password, email) {
     try {
       const passwordHash = await authUtils.hashPassword(password);
 
-      const query = `INSERT INTO users (username, password_hash)
+      const query = `INSERT INTO users (username, password_hash, email)
         VALUES (?, ?) RETURNING *`;
-      const { rows: [user] } = await knex.raw(query, [username, passwordHash]);
+      const { rows: [user] } = await knex.raw(query, [username, passwordHash, email]);
       return new User(user);
     } catch (err) {
       console.error(err);
