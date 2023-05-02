@@ -8,10 +8,11 @@ class User {
   // to provide the controller with instances that
   // have access to the instance methods isValidPassword
   // and update.
-  constructor({ id, username, password_hash }) {
+  constructor({ id, username, password_hash, email }) {
     this.id = id;
     this.username = username;
     this.#passwordHash = password_hash;
+    this.email = email;
   }
 
   static async list() {
@@ -52,7 +53,7 @@ class User {
       const passwordHash = await authUtils.hashPassword(password);
 
       const query = `INSERT INTO users (username, password_hash, email)
-        VALUES (?, ?) RETURNING *`;
+        VALUES (?, ?, ?) RETURNING *`;
       const { rows: [user] } = await knex.raw(query, [username, passwordHash, email]);
       return new User(user);
     } catch (err) {

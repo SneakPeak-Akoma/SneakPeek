@@ -5,8 +5,6 @@ const User = require('../models/user');
  */
 exports.seed = async (knex) => {
   await User.deleteAll();
-  // await User.create('cool_cat', 'password1');
-  // await User.create('l33t-guy', 'password1');
   
 };
 
