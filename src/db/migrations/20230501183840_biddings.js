@@ -3,7 +3,7 @@
  * @returns { Promise<void> }
  */
 exports.up = (knex) => knex.schema.createTable("biddings", (table) => {
-    table.increments('bid_id');
+    table.increments('id');
     table.integer('post_id');
     table.integer('user_id');
     table.integer('user_bid');

@@ -6,6 +6,7 @@ const createListings = require('./createListing')
 const login = require('./login');
 const logout = require('./logout');
 const showMe = require('./show-me');
+const createBiddings = require('./createBidding')
 
 module.exports = {
   list,
@@ -15,5 +16,6 @@ module.exports = {
   login,
   logout,
   showMe,
-  createListings
+  createListings,
+  createBiddings
 };

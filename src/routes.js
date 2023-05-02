@@ -33,4 +33,10 @@ Router.patch('/users/:id', checkAuthentication, userController.update);
 // Delete
 Router.delete('/users/logout', userController.logout);
 
+//Bid
+Router.post('/users/createBidding', userController.createBiddings)
+
+
+//Router.post('/users/createBidding', userController.createBidding)
+
 module.exports = Router;
