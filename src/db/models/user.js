@@ -39,15 +39,20 @@ class User {
 
   static async findByUsername(username) {
     try {
-      const query = 'SELECT * FROM users WHERE username = ?';
-      const { rows: [user] } = await knex.raw(query, [username]);
-      return user ? new User(user) : null;
+      const usernameQuery= 'SELECT * FROM users WHERE username = ? ';
+      const emailQuery = 'SELECT * FROM users WHERE email = ? ';
+      let { rows: [email] } = await knex.raw(usernameQuery, [username]);
+      let { rows: [usernames] } = await knex.raw(emailQuery, [username]);
+      console.log(email,usernames)
+      return usernames ? new User(usernames):
+      email? new User(email): null;
     } catch (err) {
       console.error(err);
       return null;
     }
   }
 
+  
   static async create(username, password, email) {
     try {
       const passwordHash = await authUtils.hashPassword(password);

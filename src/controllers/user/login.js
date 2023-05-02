@@ -2,7 +2,7 @@ const loginUser = async (req, res) => {
   const {
     session,
     db: { User },
-    body: { username, password },
+    body: { username, password, email},
   } = req;
 
   const user = await User.findByUsername(username);
