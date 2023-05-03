@@ -8,7 +8,7 @@ import {
 const main = async () => {
   const user = await fetchLoggedInUser();
   setNav(!!user);
-
+  console.log(user)
   const [secret, _err] = await handleFetch('/api/logged-in-secret');
   console.log('secret, _err:', secret, _err);
   if (secret) {

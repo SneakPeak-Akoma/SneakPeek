@@ -3,16 +3,15 @@
  * @returns { Promise<void> }
  */
 exports.up = (knex) => knex.schema.createTable("listings", (table) => {
-    table.increments("id");
-    table.integer("user_id");
-    table.string("photo");
-    table.string("location");
-    table.date("start_date");
-    table.date("end_date");
+    table.increments("listing_id");
+    table.string("listing_name");
     table.text("description");
     table.string("brand");
-    table.integer('user_bid');
-    table.string("post_name");
+    table.integer("user_id").references("id").inTable('users');
+    table.string("photo");
+    table.string("location");
+    table.date("end_date");
+    table.integer('bid_price');
     table.timestamps(true, true);
 });
 

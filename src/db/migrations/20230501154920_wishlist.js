@@ -4,8 +4,8 @@
  */
 exports.up = (knex) => knex.schema.createTable('wishlist',(table) => {
     table.increments();
-    table.integer('post_id');
-    table.integer('user_id');
+    table.integer('post_id').references('listing_id').inTable('listings');
+    table.integer('user_id').references("id").inTable('users');;
     table.timestamps(true, true);
 });
 
