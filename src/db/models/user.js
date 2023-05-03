@@ -69,7 +69,7 @@ class User {
 
   static async deleteAll() {
     try {
-      return knex.raw('TRUNCATE users;');
+      return knex.raw('DELETE FROM users;');
     } catch (err) {
       console.error(err);
       return null;

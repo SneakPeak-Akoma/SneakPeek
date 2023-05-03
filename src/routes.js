@@ -34,8 +34,10 @@ Router.patch('/users/:id', checkAuthentication, userController.update);
 Router.delete('/users/logout', userController.logout);
 
 //Bid
-Router.post('/users/createBidding', userController.createBiddings)
+Router.post('/biddings/createBidding', userController.createBiddings)
 
+//List
+Router.post('/listings/createListings')
 
 //Router.post('/users/createBidding', userController.createBidding)
 
