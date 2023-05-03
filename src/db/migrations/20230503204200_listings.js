@@ -1,9 +1,11 @@
+
 /**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
+* @param { import("knex").Knex } knex
+* @returns { Promise<void> }
+*/
 exports.up = (knex) => knex.schema.createTable("listings", (table) => {
-    table.increments("listing_id");
+    table.increments();
+    table.integer("listing_id").unique()
     table.string("listing_name");
     table.text("description");
     table.string("brand");
@@ -14,6 +16,7 @@ exports.up = (knex) => knex.schema.createTable("listings", (table) => {
     table.integer('bid_price');
     table.timestamps(true, true);
 });
+
 
 /**
  * @param { import("knex").Knex } knex

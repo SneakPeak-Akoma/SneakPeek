@@ -4,37 +4,39 @@
         createListing.js => username, photo, name, location, description, and brand 
 
 */
+
 const knex = require("../knex");
 class Listings {
-  constructor({ username, photo, post_name, location, description, brand }) {
-    this.username = username;
-    this.photo = photo;
-    this.post_name = post_name;
-    this.location = location;
+  constructor({ listing_id, listing_name, description, brand, user_id, photo,location }) {
+    this.listing_id = listing_id;
+    this.listing_name = listing_name; 
     this.description = description;
     this.brand = brand;
+    this.user_id = user_id;
+    this.photo = photo;
+    this.location = location;
   }
 
   static async createListing(
-    username,
-    photo,
-    post_name,
-    location,
-    description,
-    brand
+        listing_id, 
+        listing_name, 
+        description,
+        brand, 
+        photo,
+        location
   ) {
     try {
-      const query = `INSERT INTO listings (username, photo,post_name,location,description,brand)
+      const query = `INSERT INTO listings (listing_id, listing_name, description, brand,photo,location)
     VALUES (?,?,?,?,?,?) RETURNING *`;
       const {
         rows: [listings],
       } = await knex.raw(query, [
-        username,
-        photo,
-        post_name,
-        location,
+        listing_id, 
+        listing_name, 
         description,
-        brand,
+        brand, 
+        photo,
+        location
       ]);
       return new Listings(listings);
     } catch (err) {
@@ -43,3 +45,5 @@ class Listings {
     }
   }
 }
+
+module.exports = Listings;

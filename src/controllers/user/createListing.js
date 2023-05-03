@@ -2,9 +2,9 @@ const createListings = async (req, res) => {
     const {
       session,
       db: { listings },
-      body: { username, photo, post_name, location, description, brand},
+      body: { listing_id, listing_name, description, brand, photo,location},
     } = req;
-    const listing = await Listings.createListing( username, photo, post_name, location, description, brand);
+    const listing = await Listings.createListing(listing_id, listing_name, description, brand, photo,location);
     res.send(listing);
   };
   
