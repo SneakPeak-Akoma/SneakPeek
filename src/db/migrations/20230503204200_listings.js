@@ -4,8 +4,7 @@
 * @returns { Promise<void> }
 */
 exports.up = (knex) => knex.schema.createTable("listings", (table) => {
-    table.increments();
-    table.integer("listing_id").unique()
+    table.increments("listing_id");
     table.string("listing_name");
     table.text("description");
     table.string("brand");

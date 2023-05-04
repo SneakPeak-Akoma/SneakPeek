@@ -44,6 +44,14 @@ class Listings {
       return null;
     }
   }
+  static async deleteAll() {
+    try {
+      return knex.raw('DELETE FROM listings;');
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  }
 }
 
 module.exports = Listings;

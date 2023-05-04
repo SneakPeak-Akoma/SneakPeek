@@ -25,6 +25,14 @@ class bidding {
       return null;
     }
   }
+    static async deleteAll() {
+    try {
+      return knex.raw('DELETE FROM biddings;');
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  }
 }
 module.exports = bidding;
 

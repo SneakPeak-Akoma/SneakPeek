@@ -38,7 +38,7 @@ Router.post('/biddings/createBidding', userController.createBiddings)
 
 //List
 Router.post('/listings/createListings', userController.createListings)
-Router.update('/listing/updateListing')
+//Router.update('/listing/updateListing')
 //Router.post('/users/createBidding', userController.createBidding)
 
 module.exports = Router;
