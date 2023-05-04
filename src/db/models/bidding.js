@@ -12,13 +12,15 @@ class bidding {
     this.user_id = user_id;
     this.user_bid = user_bid;
   }
-  static async createBiddings(user_bid) {
+  static async createBiddings(user_bid, post_id, user_id) {
     try {
-      const query = `INSERT INTO biddings (user_bid)
-        VALUES (?) RETURNING *`;
+      const query = `INSERT INTO biddings (user_bid, post_id, user_id)
+        VALUES (?, (SELECT listing_id FROM listings WHERE listing_id = ?), (SELECT id FROM users WHERE id = ?)) 
+        RETURNING *`;
       const {
         rows: [bid],
-      } = await knex.raw(query, [user_bid]);
+      } = await knex.raw(query, [user_bid, post_id, user_id]);
+      console.log(bid)
       return new bidding(bid);
     } catch (err) {
       console.error(err);

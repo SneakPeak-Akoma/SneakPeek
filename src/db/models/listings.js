@@ -1,10 +1,3 @@
-/*
-1. Class(model) 
-    new controller :    
-        createListing.js => username, photo, name, location, description, and brand 
-
-*/
-
 const knex = require("../knex");
 class Listings {
   constructor({ listing_id, listing_name, description, brand, user_id, photo,location }) {
