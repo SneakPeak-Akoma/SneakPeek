@@ -1,7 +1,8 @@
 const express = require('express');
-const userController = require('./controllers/user');
+const controller = require('./controllers');
 const addModels = require('./middleware/add-models');
 const checkAuthentication = require('./middleware/check-authentication');
+
 
 const Router = express.Router();
 Router.use(addModels);
@@ -15,28 +16,44 @@ Router.get('/cookieCounter', (req, res) => {
 });
 
 // Create
-Router.post('/users', userController.create);
-Router.post('/users/login', userController.login);
+Router.post('/users', controller.create);
+Router.post('/users/login', controller.login);
 
 // Read
-Router.get('/users', userController.list);
-Router.get('/users/:id', userController.show);
-Router.get('/me', userController.showMe);
+Router.get('/users', controller.list);
+Router.get('/users/:id', controller.show);
+Router.get('/me', controller.showMe);
 // checkAuthentication middleware is applied to only to this route (and /logged-in-secret)
 Router.get('/logged-in-secret', checkAuthentication, (req, res) => {
   res.send({ msg: 'The secret is: there is no secret.' });
 });
 
 // Update
-Router.patch('/users/:id', checkAuthentication, userController.update);
+Router.patch('/users/:id', checkAuthentication, controller.update);
 
 // Delete
-Router.delete('/users/logout', userController.logout);
+Router.delete('/users/logout', controller.logout);
 
+//Wishlist routes
+//add to wishlist
+Router.post('/wishlist', checkAuthentication ,controller.addToWishlist)
+//show all wishlists
+Router.get('/wishlist', controller.listWishlists)
+//remove from wishlist
+Router.delete('/wishlist/', controller.deletedWishListing)
+//get user wishlists
+Router.get('/wishlist/:id', checkAuthentication ,controller.getUserWishList)
+
+// Bid routes
+//Show Specific Bid 
+Router.get('/biddings/:id', controller.showBidsSpecific)
+//Show All Bids
+Router.get('/biddings/', controller.showBidsAll)
 //Create New Bid
-Router.post('/biddings/createBidding', userController.createBiddings)
+Router.post('/biddings/', checkAuthentication, controller.createBiddings)
 
+// Listing routes
 //Create New Listing
-Router.post('/listings/createListings', userController.createListings)
+Router.post('/listings/', controller.createListings)
 
 module.exports = Router;

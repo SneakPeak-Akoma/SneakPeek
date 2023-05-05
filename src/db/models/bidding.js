@@ -1,16 +1,12 @@
-/*
-1. Class(model) 
-    new controller :    
-    createBidding.js needs to update the bidding table so that it updates the bid id, post id, user id ,user bid. Can use timestamps to display when the bid was made.
-
-*/
 const knex = require("../knex");
-class bidding {
-  constructor({ bid_id, post_id, user_id, user_bid }) {
-    this.bid_id = bid_id;
+class Bidding {
+  constructor({ id, post_id, user_id, user_bid, created_at }) {
+    
+    this.bid_id = id;
     this.post_id = post_id;
     this.user_id = user_id;
     this.user_bid = user_bid;
+    this.created_at = created_at
   }
   static async createBiddings(user_bid, post_id, user_id) {
     try {
@@ -20,14 +16,49 @@ class bidding {
       const {
         rows: [bid],
       } = await knex.raw(query, [user_bid, post_id, user_id]);
-      console.log(bid)
-      return new bidding(bid);
+       console.log(bid)
+      return new Bidding(bid);
     } catch (err) {
       console.error(err);
       return null;
     }
   }
-    static async deleteAll() {
+  static async highestBid(post_id){
+    try {
+      const query = `SELECT *
+      FROM biddings
+      WHERE post_id = ?
+      ORDER BY user_bid DESC LIMIT 1`;
+      const { rows: [highestBidder] } = await knex.raw(query, [post_id]);
+      return highestBidder ? new Bidding(highestBidder) : null;
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  }
+  static async showBidsSpecific(post_id){
+    try {
+      const query = `SELECT * FROM biddings WHERE post_id = ?`;
+      const { rows } = await knex.raw(query, [post_id]);
+      const mapped = rows.map((bidders) => new Bidding(bidders))
+      return mapped.length != 0 ? mapped: null
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  }
+  static async showBidsAll(){
+    try {
+      const query = `SELECT * FROM biddings`;
+      const { rows } = await knex.raw(query);
+      console.log(rows)
+      return rows.map((bidders) => new Bidding(bidders));    
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  }
+  static async deleteAll() {
     try {
       return knex.raw('DELETE FROM biddings;');
     } catch (err) {
@@ -36,43 +67,4 @@ class bidding {
     }
   }
 }
-module.exports = bidding;
-
-// class Listings {
-//   constructor({ username, photo, post_name, location, description, brand }) {
-//     this.username = username;
-//     this.photo = photo;
-//     this.post_name = post_name;
-//     this.location = location;
-//     this.description = description;
-//     this.brand = brand;
-//   }
-
-//   static async createListing(
-//     username,
-//     photo,
-//     post_name,
-//     location,
-//     description,
-//     brand
-//   ) {
-//     try {
-//       const query = `INSERT INTO listings (username, photo,post_name,location,description,brand)
-//     VALUES (?,?,?,?,?,?) RETURNING *`;
-//       const {
-//         rows: [listings],
-//       } = await knex.raw(query, [
-//         username,
-//         photo,
-//         post_name,
-//         location,
-//         description,
-//         brand,
-//       ]);
-//       return new Listings(listings);
-//     } catch (err) {
-//       console.error(err);
-//       return null;
-//     }
-//   }
-// }
+module.exports = Bidding;
