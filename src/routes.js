@@ -53,6 +53,7 @@ Router.get('/biddings/', controller.showBidsAll)
 Router.post('/biddings/', checkAuthentication, controller.createBiddings)
 
 // Listing routes
+
 //Create New Listing
 Router.post('/listings/', controller.createListings)
 

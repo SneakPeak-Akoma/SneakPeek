@@ -3,6 +3,7 @@ import {
   fetchLoggedInUser,
   signupAndLoginHandler,
   setNav,
+  
 } from './global.js';
 
 const main = async () => {
