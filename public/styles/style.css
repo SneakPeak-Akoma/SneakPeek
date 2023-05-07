@@ -5,6 +5,9 @@ body {
 nav {
   height: 2rem;
 }
+.transparent-navbar{
+  background-color:transparent;
+}
 
 nav ul {
   list-style: none;

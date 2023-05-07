@@ -1,4 +1,4 @@
-const createListings = async (req, res) => {
+ const createListings = async (req, res) => {
     const {
       session,
       db: { Listings },
@@ -7,8 +7,8 @@ const createListings = async (req, res) => {
     const listing = await Listings.createListing(
       listing_name, 
       description, 
-      brand, 
       session.userId, 
+      brand, 
       photo,
       bid_price,
       end_date

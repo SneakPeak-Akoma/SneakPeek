@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sneak Peak Listing Page</title>
+	<link rel="stylesheet" href="./styles/listingCreation.css">
+	<script type="module" src="./scripts/index.js"></script>
+</head>
+<body>
+	<nav id="main-nav"></nav>
+
+	<h1>Sell Your Item on Sneak Peak</h1>
+
+	<form id="listing-form" action="submit_listing.php" method="POST">
+		<input type="text" id="title" name="title" placeholder="Title"><br>
+
+		<input type="text" id="title" name="title" placeholder="Brand"><br>
+
+		<textarea id="description" name="description" placeholder="Description"></textarea><br>
+
+		<input type="number" id="price" name="price" placeholder="Starting Bid"><br>
+
+		<input type="text" id="location" name="location" placeholder="Location"><br>
+		
+		<!-- <select id="category" name="category" placeholder="Category">
+			<option disabled value="electronics">Electronics</option>
+			<option disabled value="clothing">Clothing</option>
+			<option disabled value="home">Home & Garden</option>
+			<option disabled value="toys">Toys & Hobbies</option>
+			<option disabled value="sporting_goods">Sporting Goods</option>
+			<option disabled value="Sneakers"> Sneaker</option>
+		</select><br> -->
+
+		<input type="text" id="contact_name" name="contact_name" placeholder="Photo URL"><br>
+
+		<p> Date you will like it to end: </p>
+
+		<input class='form_date'type="date" id="end_date" name="date" placeholder="end_date"><br>
+
+		<input type="submit" id="submit-btn" value="Submit Listing">
+	</form>
+
+</body>
+</html>

@@ -5,6 +5,7 @@ import {
     
   } from './global.js';
   
+  const main_auction = document.getElementById('main_auction')
   const main = async () => {
     const user = await fetchLoggedInUser();
     setNav(!!user);
@@ -15,29 +16,29 @@ import {
   
   main();
   
-  // function showlistings(currlistings){
-    //clear main
-   // main.innerHTML = '';
-    
-    //iterating through the database response object
+  function showlistings(currlistings){
   
-//     currlistings.forEach((listing) => {
-//         const {isting_name, description, brand, user_id, photo, bid_price, end_date,location} = listing;
-//         const  = document.createElement('div');
-//         movieEl1.classList.add('movie');
+   main_auction.innerHTML = '';
+   // iterating through the database response object
+  
+    currlistings.forEach((listing) => {
+        const {listing_name, description, brand, photo, bid_price, end_date,location} = listing;
+        const newListing = document.createElement('div');
+        newListing.classList.add('list');
         
-//         movieEl1.innerHTML = `
-//         <img src=${IMGPATH + poster_path} alt=${title}>
-//         <div class="movie-info">
-//         <h3>${title}</h3>
-//         <span class=${getClassByRate(vote_average)}>${vote_average}</span>
-//         </div>
-        
-//         <div class="overview">
-//         <h4>Overview:</h4>
-//         ${overview}
-//         </div>       
-//         `;
-//         main.appendChild(movieEl1);
-//     });
-// }
+        newListing.innerHTML = `
+        <div class="card">
+  <img src= ${photo} class="card-img-top" alt="Sneaker Image">
+  <div class="card-body">
+    <h5 class="card-title">${listing_name}</h5>
+    <p class="card-text">${description}<br> ${end_date} </p>
+    <p class="card-text">Brand: ${brand}</p>
+    <p class="card-text">User ID: @sneakerhead23</p>
+    <p class="card-text">Location: ${location}</p>
+    <p>${bid_price}</p>
+    <a href="" class="btn btn-primary">Place Bid</a>
+  </div>
+</div> `;
+        main_auction.appendChild(newListing);
+    });
+}
