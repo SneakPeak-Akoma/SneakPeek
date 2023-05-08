@@ -23,10 +23,9 @@ class Listings {
         location
   ) {
     try {
-      const query = `INSERT INTO listings (listing_name, description, brand, user_id, photo, bid_price, end_date,location)
+      const query = `INSERT INTO listings (listing_name, description, user_id,brand,  photo, bid_price, end_date,location)
     VALUES (?,?,?,?,?,?,?,?) RETURNING *`;
-      const {
-        rows: [listings],
+      const {rows: [listings],
       } = await knex.raw(query, [
         listing_name, 
         description,
@@ -41,6 +40,16 @@ class Listings {
     } catch (err) {
       console.error(err);
       return null;
+    }
+  }
+  static async getAllListings() {
+    try{
+      const query = `SELECT * FROM listings`
+      const {rows} = await knex.raw(query);
+      return rows.map((listing) => new Listings(listing));
+    }catch (err) {
+        console.error(err);
+        return null;
     }
   }
   static async getUsersListings (id) {

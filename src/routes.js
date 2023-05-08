@@ -55,6 +55,7 @@ Router.post('/biddings/', checkAuthentication, controller.createBiddings)
 // Listing routes
 
 //Create New Listing
-Router.post('/listings/', controller.createListings)
+Router.post('/listings', controller.createListings);
+Router.get('/listings', controller.getAllListings);
 
 module.exports = Router;

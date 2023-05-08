@@ -1,7 +1,6 @@
 import {
     fetchLoggedInUser,
     handleFetch,
-    setNav,
     
   } from './global.js';
   
@@ -15,7 +14,16 @@ import {
   };
   
   main();
-  
+  const db = 'sneakpeak'
+  getListings()
+
+  async function getListings(db){
+    const response = await fetch(db);
+    const responseData = await response.json();
+    
+    //invoked for showing the movies
+    showlistings(responseData.results);
+}
   function showlistings(currlistings){
   
    main_auction.innerHTML = '';
