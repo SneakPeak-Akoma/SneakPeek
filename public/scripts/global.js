@@ -80,10 +80,24 @@ const setNav = (hasLoggedInUser) => {
   </div>
 </nav>`
 
-  const loggedInNavHtml = `<ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="./user.html">Profile</a></li>
-  </ul>`;
+  const loggedInNavHtml = `<nav class="navbar navbar-expand-lg navbar-light fixed-top transparent-navbar"  id="mainNav">
+  <div class="container px-4 px-lg-5">
+      <a class="navbar-brand" href="/">Sneak Peak</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link" href="./listingsCreation.html">Listing Creation</a></li>
+              <li class="nav-item"><a class="nav-link" href="">WishList</a></li>
+              <li class="nav-item"><a class="nav-link" href="./auction.html">Auction</a></li>
+              <li class="nav-item"><a class="nav-link" href="./user.html ">Profile</a></li>
+          </ul>
+      </div>
+  </div>
+</nav>`
+;
 
   const navHtml = hasLoggedInUser ? loggedInNavHtml : loggedOutNavHtml;
   document.querySelector('nav').innerHTML = navHtml;

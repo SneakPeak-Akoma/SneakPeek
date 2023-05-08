@@ -14,7 +14,7 @@ const listWishlists = require('./wishlist/getWishList')
 const addToWishlist = require('./wishlist/addToWishList')
 const deletedWishListing = require('./wishlist/removeFromWishList')
 const createListings = require('./listings/createListing')
-
+const getAllListings = require('./listings/getAllListings')
 module.exports = {
   list,
   create,
@@ -31,5 +31,6 @@ module.exports = {
   getUserWishList,
   listWishlists,
   addToWishlist,
-  deletedWishListing
+  deletedWishListing,
+  getAllListings,
 };

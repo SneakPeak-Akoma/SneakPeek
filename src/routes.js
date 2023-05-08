@@ -1,5 +1,6 @@
 const express = require('express');
 const controller = require('./controllers');
+const listingController = require('./controllers/listings')
 const addModels = require('./middleware/add-models');
 const checkAuthentication = require('./middleware/check-authentication');
 
@@ -23,6 +24,7 @@ Router.post('/users/login', controller.login);
 Router.get('/users', controller.list);
 Router.get('/users/:id', controller.show);
 Router.get('/me', controller.showMe);
+Router.get('/listings', controller.getAllListings)
 // checkAuthentication middleware is applied to only to this route (and /logged-in-secret)
 Router.get('/logged-in-secret', checkAuthentication, (req, res) => {
   res.send({ msg: 'The secret is: there is no secret.' });
@@ -55,7 +57,8 @@ Router.post('/biddings/', checkAuthentication, controller.createBiddings)
 // Listing routes
 
 //Create New Listing
-Router.post('/listings', controller.createListings);
-Router.get('/listings', controller.getAllListings);
+Router.post('/listings', listingController.create);
+
+Router.get('/listings', listingController.getAll);
 
 module.exports = Router;

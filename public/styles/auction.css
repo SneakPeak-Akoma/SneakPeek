@@ -1,55 +1,142 @@
+/* Style the card
 .card {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    overflow: hidden;
-    max-width: 350px;
-  }
-  
-  .card-body {
-    padding: 10px;
-  }
-  
-  .card-title {
-    font-size: 18px;
-    margin-bottom: 5px;
-  }
-  
-  .card-text {
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-  
-  .card-img-top {
-    height: 180px;
-    object-fit: cover;
-  }
-  
-  .bid-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-  }
-  
-  .current-bid {
-    font-size: 16px;
-    font-weight: bold;
-    margin-right: 10px;
-  }
-  
-  .bid-button {
-    padding: 6px 10px;
-    background-color: #007bff;
-    border: none;
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-  }
-  
-  .bid-button:hover {
-    background-color: #0062cc;
-  }
-  
+  width: 22rem;
+  height: 34rem;
+  margin: 1rem;
+  display: inline-block;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+  height: 18rem;
+  object-fit: cover;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.btn-primary {
+  font-size: 0.9rem;
+}
+
+/* Style the list */
+/* .list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 120rem;
+} */ */
+
+/* Style the card */
+.card {
+  width: 22rem;
+  height: 100%;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  height: 18rem;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.btn-primary {
+  font-size: 0.9rem;
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-primary:hover {
+  background-color: #218838;
+  border-color: #218838;
+}
+
+/* Style the list */
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 120rem;
+  padding: 2rem 0;
+}
+
+.list-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 120rem;
+  padding: 2rem;
+}
+
+/* Style the navigation */
+.navbar {
+  background-color: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+  color: #343a40 !important;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  color: #28a745 !important;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #343a40;
+}
+
+.navbar-brand:hover {
+  color: #28a745;
+}

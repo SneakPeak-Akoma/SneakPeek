@@ -5,6 +5,12 @@ import {
   } from './global.js';
 const form = document.querySelector('#listing-form');
 
+const main = async () =>{
+  const user= await fetchLoggedInUser();
+  setNav(!!user)
+}
+main()
+
 form.addEventListener('submit', async (event) => {
   event.preventDefault(); // prevent default form submission behavior
 
